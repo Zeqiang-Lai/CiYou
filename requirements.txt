@@ -1,2 +1,4 @@
+itsdangerous
+passlib
 flask
 flask_cors
