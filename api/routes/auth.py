@@ -24,6 +24,11 @@ def verify_password(username_or_token, password):
     return True
 
 
+@auth_blueprint.route('/')
+def index():
+    return "Authorization API"
+
+
 @auth_blueprint.route('/login', methods=['GET'])
 @auth.login_required
 def login():
