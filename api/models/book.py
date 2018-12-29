@@ -18,7 +18,16 @@ class BookModel():
         self.word_meaning_list['abase'] = {
             'spell': 'abase',
             'phone': 'E5beIs',
-            'meaning': 'v. 降低（地位、职位、威望或尊严）： to lower in rank, office, prestige, or esteem'
+            'meaning': [
+                {'basic': 'v. 降低（地位、职位、威望或尊严）： to lower in rank, office, prestige, or esteem',
+                 'example': '',
+                 'jinyi': '',
+                 'tongyi': '',
+                 'paishen': ''
+                },
+                {},
+                {}
+            ]
         }
         self.word_meaning_list['abash'] = {
             'spell': 'abash',
@@ -32,9 +41,11 @@ class BookModel():
         }
 
     def get_review_list(self, word_num):
+        # TODO:
         return self.test_word_list[:word_num]
 
     def get_word(self, word_spell):
+        # TODO:
         if word_spell in self.word_meaning_list.keys():
             return self.word_meaning_list[word_spell]
         return {
@@ -42,7 +53,3 @@ class BookModel():
             'phone': 'error',
             'meaning': 'error'
         }
-
-    @staticmethod
-    def find_by_id(book_id):
-        return BookModel()

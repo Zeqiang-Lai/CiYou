@@ -1,23 +1,11 @@
-from flask import jsonify
-
+from flask import jsonify, g
 from api.resources.base import AuthResource
 
 
 class BookList(AuthResource):
 
     def get(self):
-        return jsonify([
-            {
-                "id": 1,
-                "name": "Book1",
-                "description": "Description1"
-            },
-            {
-                "id": 2,
-                "name": "Book2",
-                "description": "Description2"
-            }
-        ])
+        return g.user.get_booklist()
 
 
 class Book(AuthResource):

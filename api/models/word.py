@@ -1,6 +1,21 @@
 
 class WordModel():
 
-    @staticmethod
-    def get_word_by_spell(word_spell):
+    def __init__(self):
+        self.meaning = []
+
+    def get_comments(self):
         pass
+
+    def get_meaning(self):
+        pass
+
+
+
+class CommentModel:
+    pass
+
+
+class StoryModel:
+    pass
+
