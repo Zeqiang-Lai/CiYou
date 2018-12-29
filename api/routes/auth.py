@@ -2,9 +2,7 @@ from flask import Blueprint, Flask, abort, request, jsonify, g, url_for
 from flask_httpauth import HTTPBasicAuth
 
 
-from api.models.user import User
-from api import db
-
+from api.models.user import UserModel
 
 auth_blueprint = Blueprint('auth', __name__)
 
@@ -14,10 +12,10 @@ auth = HTTPBasicAuth()
 @auth.verify_password
 def verify_password(email_or_token, password):
     # first try to authenticate by token
-    user = User.verify_auth_token(email_or_token)
+    user = UserModel.verify_auth_token(email_or_token)
     if not user:
         # try to authenticate with username/password
-        user = User.query.filter_by(email=email_or_token).first()
+        user = UserModel.verify_email(email=email_or_token)
         if not user or not user.verify_password(password):
             return False
     g.user = user
@@ -41,14 +39,14 @@ def register():
     username = request.json.get('username')
     email = request.json.get('email')
     password = request.json.get('password')
-    if username is None or password is None:
+    if username is None or password is None or email is None:
         abort(400)  # missing arguments
-    if User.query.filter_by(email=email).first() is not None:
+    if UserModel.verify_email(email) is not None:
         abort(400)  # existing user
-    user = User(username=username, email=email)
-    user.hash_password(password)
-    db.session.add(user)
-    db.session.commit()
 
-    return jsonify({'username': user.username,
-                    'email': user.email}), 201
+    UserModel.register(email=email,
+                       username=username,
+                       password=password)
+
+    return jsonify({'username': username,
+                    'email': email}), 201

@@ -1,7 +1,7 @@
 from api import db
 
 
-class BookModel():
+class BookModel:
 
     def __init__(self):
         # for testing
@@ -41,10 +41,16 @@ class BookModel():
         }
 
     def get_review_list(self, word_num):
+        """
+        获取要复习的单词列表
+        :param word_num: 复习量
+        :return: [WordModel]
+        """
         # TODO:
         return self.test_word_list[:word_num]
 
     def get_word(self, word_spell):
+        """ 暂时函数 """
         # TODO:
         if word_spell in self.word_meaning_list.keys():
             return self.word_meaning_list[word_spell]
@@ -53,3 +59,11 @@ class BookModel():
             'phone': 'error',
             'meaning': 'error'
         }
+
+    def get_word_list(self):
+        """
+        获取词书的全部单词列表
+        :return: [WordModel]
+        """
+        # TODO:
+        pass

@@ -1,5 +1,5 @@
 
-class WordModel():
+class WordModel:
 
     def __init__(self):
         self.meaning = []
@@ -9,7 +9,6 @@ class WordModel():
 
     def get_meaning(self):
         pass
-
 
 
 class CommentModel:
