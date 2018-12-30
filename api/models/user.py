@@ -1,5 +1,3 @@
-from flask import jsonify
-
 from api.models.book import BookModel
 from api.models.database import UserDBModel
 
@@ -23,11 +21,14 @@ class UserModel:
         # TODO:
         return BookModel()
 
+    def get_username(self):
+        return self.db_model.username
+
     def get_booklist(self):
         # TODO:
         booklist = []
 
-        return jsonify([
+        return [
             {
                 "id": 1,
                 "name": "Book1",
@@ -38,7 +39,7 @@ class UserModel:
                 "name": "Book2",
                 "description": "Description2"
             }
-        ])
+        ]
 
     def get_checkin_info(self, year, month):
         # TODO:

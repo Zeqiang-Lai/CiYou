@@ -31,7 +31,11 @@ def index():
 @auth.login_required
 def login():
     token = g.user.generate_auth_token(6000)
-    return jsonify({'token': token.decode('ascii'), 'duration': 6000})
+    return jsonify({
+        'token': token.decode('ascii'),
+        'username': g.user.get_username(),
+        'duration': 6000}
+    )
 
 
 @auth_blueprint.route('/register', methods=['POST'])

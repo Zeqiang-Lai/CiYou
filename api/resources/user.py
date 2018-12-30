@@ -2,7 +2,6 @@ from flask import jsonify, g
 
 from api.resources.base import AuthResource
 
-
 class CheckIn(AuthResource):
     def get(self, year, month, day):
         return jsonify(g.user.get_checkin_info(year, month))
