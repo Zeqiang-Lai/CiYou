@@ -10,15 +10,33 @@ class BookModel:
 
         if id == 1:
             self.basic_info = {
-                "id": 1,
-                "name": "Book1",
-                "description": "Description1"
+                'basic': {
+                    'id': 1,
+                    'name': 'Book1',
+                    'description': 'Description1',
+                    'tags': ['出国考试', 'GRE', 'TOFEL']
+                },
+                'progress': {
+                    'total': 3000,
+                    'done': 1500,
+                    'familiar': 423,
+                    'raw': 722
+                }
             }
         elif id == 2:
             self.basic_info = {
-                "id": 2,
-                "name": "Book2",
-                "description": "Description2"
+                'basic': {
+                    'id': 2,
+                    'name': 'Book2',
+                    'description': 'Description2',
+                    'tags': ['考研', '四六级']
+                },
+                'progress': {
+                    'total': 4000,
+                    'done': 1230,
+                    'familiar': 123,
+                    'raw': 232
+                }
             }
 
         # for testing

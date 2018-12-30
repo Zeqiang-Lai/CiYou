@@ -80,6 +80,15 @@ class UserModel:
         return True
 
     def get_least_history(self, num_of_days):
+        """
+        获取最近的背词记录
+        :param num_of_days: 要获取的天数,从今天开始往前倒退
+        :return: 一个字典,格式如下
+        {
+            "plan": plan, # 计划背诵单词量
+            "done": done  # 实际完成量
+        }
+        """
         # TODO:
         plan = [100, 200, 300, 500, 200, 150, 100, 200, 300]
         done = [100, 190, 150, 490, 140, 150, 80, 180, 250]
