@@ -8,7 +8,7 @@ class Word(AuthResource):
 
     def get(self, book_id, word_spell):
         book_model = g.user.find_book_by_id(book_id)
-        return book_model.get_word(word_spell)
+        return book_model.get_word(word_spell).get_info()
 
 
 class Search(Resource):

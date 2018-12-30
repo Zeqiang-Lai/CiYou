@@ -4,25 +4,25 @@ from api.models.database import UserDBModel
 
 class UserModel:
 
-    def __init__(self, db_model):
+    def __init__(self, user_db_model):
         """
         :type db_model: UserDBModel
         :param db_model:
         """
-        self.db_model = db_model
+        self.user_db_model = user_db_model
 
     def verify_password(self, password):
-        return self.db_model.verify_password(password)
+        return self.user_db_model.verify_password(password)
 
     def generate_auth_token(self, expiration=6000):
-        return self.db_model.generate_auth_token(expiration)
+        return self.user_db_model.generate_auth_token(expiration)
 
     def find_book_by_id(self, book_id):
         # TODO:
         return BookModel(book_id)
 
     def get_username(self):
-        return self.db_model.username
+        return self.user_db_model.username
 
     def get_booklist(self):
         """
@@ -34,10 +34,48 @@ class UserModel:
         return booklist
 
     def get_checkin_info(self, year, month):
+        """
+        获取该年该月的签到信息
+        :param year:
+        :param month:
+        :return: 一个list,包含该月所有签到的天,格式如下
+        [
+            {
+                "year": int
+                "month": int
+                "day": int
+            },
+            ...
+        ]
+        """
         # TODO:
-        pass
+        checkin_info = [
+            {
+                'year': 2018,
+                'month': 12,
+                'day': 1
+            },
+            {
+                'year': 2018,
+                'month': 12,
+                'day': 2
+            },
+            {
+                'year': 2018,
+                'month': 12,
+                'day': 15
+            }
+        ]
+        return checkin_info
 
     def checkin(self, year, month, day):
+        """
+        签到,需写入数据库
+        :param year:
+        :param month:
+        :param day:
+        :return: 返回是否签到成功
+        """
         # TODO:
         return True
 

@@ -26,25 +26,6 @@ class UserDBModel(db.Model):
         s = Serializer(SECRET_KEY, expires_in=expiration)
         return s.dumps({'id': self.id})
 
-    def find_book_by_id(self, book_id):
-        # TODO:
-        return BookModel()
-
-    def get_booklist(self):
-        # TODO:
-        return jsonify([
-            {
-                "id": 1,
-                "name": "Book1",
-                "description": "Description1"
-            },
-            {
-                "id": 2,
-                "name": "Book2",
-                "description": "Description2"
-            }
-        ])
-
     @staticmethod
     def verify_auth_token(token):
         s = Serializer(SECRET_KEY)

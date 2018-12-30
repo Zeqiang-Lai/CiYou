@@ -2,6 +2,7 @@ from api import db
 
 from api.models.word import WordModel
 
+
 class BookModel:
 
     def __init__(self, id):
@@ -25,6 +26,8 @@ class BookModel:
                                'abandon', 'abase', 'abash', 'abate',
                                'abandon', 'abase', 'abash', 'abate']
 
+    def get_word(self, word_spell):
+        return WordModel(word_spell)
 
     def get_review_list(self, word_num):
         """
