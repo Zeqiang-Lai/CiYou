@@ -25,6 +25,8 @@ class UserModel:
 
     def get_booklist(self):
         # TODO:
+        booklist = []
+
         return jsonify([
             {
                 "id": 1,
@@ -37,6 +39,23 @@ class UserModel:
                 "description": "Description2"
             }
         ])
+
+    def get_checkin_info(self, year, month):
+        # TODO:
+        pass
+
+    def checkin(self, year, month, day):
+        # TODO:
+        return True
+
+    def get_least_history(self, num_of_days):
+        # TODO:
+        plan = [100, 200, 300, 500, 200, 150, 100, 200, 300]
+        done = [100, 190, 150, 490, 140, 150, 80, 180, 250]
+        return {
+            "plan": plan,
+            "done": done
+        }
 
     @staticmethod
     def verify_auth_token(token):

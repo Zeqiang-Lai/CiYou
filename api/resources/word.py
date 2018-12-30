@@ -1,8 +1,7 @@
-from flask import jsonify, g
+from flask import g
+from flask_restful import Resource
 
 from api.resources.base import AuthResource
-from api.models.book import BookModel
-from api.models.word import WordModel
 
 
 class Word(AuthResource):
@@ -11,13 +10,7 @@ class Word(AuthResource):
         book_model = g.user.find_book_by_id(book_id)
         return book_model.get_word(word_spell)
 
-
-class WordList(AuthResource):
-    pass
-
-
-class ReviewWordList(AuthResource):
-
-    def get(self, book_id, word_num):
-        book_model = g.user.find_book_by_id(book_id)
-        return book_model.get_review_list(word_num)
+class Search(Resource):
+    def get(self, word_spell):
+        # TODO:
+        return word_spell

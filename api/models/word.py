@@ -5,6 +5,11 @@ class WordModel:
         self.meaning = []
 
     def get_comments(self):
+        """
+
+        :return:
+        :rtype: CommentModel
+        """
         pass
 
     def get_meaning(self):
