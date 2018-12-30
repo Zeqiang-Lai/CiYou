@@ -19,27 +19,19 @@ class UserModel:
 
     def find_book_by_id(self, book_id):
         # TODO:
-        return BookModel()
+        return BookModel(book_id)
 
     def get_username(self):
         return self.db_model.username
 
     def get_booklist(self):
+        """
+        :return:
+        :rtype: BookModel
+        """
         # TODO:
-        booklist = []
-
-        return [
-            {
-                "id": 1,
-                "name": "Book1",
-                "description": "Description1"
-            },
-            {
-                "id": 2,
-                "name": "Book2",
-                "description": "Description2"
-            }
-        ]
+        booklist = [BookModel(1), BookModel(2)]
+        return booklist
 
     def get_checkin_info(self, year, month):
         # TODO:

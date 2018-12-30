@@ -1,69 +1,70 @@
 from api import db
 
+from api.models.word import WordModel
 
 class BookModel:
 
-    def __init__(self):
+    def __init__(self, id):
+        self.id = id
+
+        if id == 1:
+            self.basic_info = {
+                "id": 1,
+                "name": "Book1",
+                "description": "Description1"
+            }
+        elif id == 2:
+            self.basic_info = {
+                "id": 2,
+                "name": "Book2",
+                "description": "Description2"
+            }
+
         # for testing
         self.test_word_list = ['abandon', 'abase', 'abash', 'abate',
                                'abandon', 'abase', 'abash', 'abate',
                                'abandon', 'abase', 'abash', 'abate']
-        self.word_meaning_list = {}
 
-        self.word_meaning_list['abandon'] = {
-            'spell': 'abandon',
-            'phone': 'E5bAndEn',
-            'meaning': 'n. 放纵： carefree, freedom from constraint'
-        }
-        self.word_meaning_list['abase'] = {
-            'spell': 'abase',
-            'phone': 'E5beIs',
-            'meaning': [
-                {'basic': 'v. 降低（地位、职位、威望或尊严）： to lower in rank, office, prestige, or esteem',
-                 'example': '',
-                 'jinyi': '',
-                 'tongyi': '',
-                 'paishen': ''
-                },
-                {},
-                {}
-            ]
-        }
-        self.word_meaning_list['abash'] = {
-            'spell': 'abash',
-            'phone': 'E5bAF',
-            'meaning': 'vt. 使尴尬，使羞愧： to destroy the self-possession or self-confidence of ,disconcert, embarrass'
-        }
-        self.word_meaning_list['abate'] = {
-            'spell': 'abate',
-            'phone': 'E5beIt',
-            'meaning': 'v. 减轻（程度或者强度）： to reduce in degree or intensity'
-        }
 
     def get_review_list(self, word_num):
         """
         获取要复习的单词列表
         :param word_num: 复习量
-        :return: [WordModel]
+        :return: [str]
         """
         # TODO:
         return self.test_word_list[:word_num]
 
-    def get_word(self, word_spell):
-        """ 暂时函数 """
-        # TODO:
-        if word_spell in self.word_meaning_list.keys():
-            return self.word_meaning_list[word_spell]
-        return {
-            'spell': 'error',
-            'phone': 'error',
-            'meaning': 'error'
+    def get_info(self):
+        """
+        根据 self.id 获取词书的基本信息
+        :return: 一个字典,包含以下字段
+        {
+            'basic': {
+                'id': str --- 词书ID
+                'name': str --- 词书名称
+                'description': str --- 词书简介
+                'tags': [str] --- 词书标签
+            }
+            'progress': {
+                'total': int --- 总背词量
+                'done': int --- 已背单词量
+                'familiar': int --- 熟记量
+                'raw': int --- 模糊量
+            }
         }
-
-    def get_word_list(self):
-        """
-        获取词书的全部单词列表
-        :return: [WordModel]
         """
         # TODO:
-        pass
+        return self.basic_info
+
+    def get_word_list(self, st_idx, length):
+        """
+        获取词书的单词列表
+        :param st_idx: 起始位置
+        :param length: 长度
+        :return:
+        :rtype [WordModel]
+        """
+        # TODO:
+        word_list = [WordModel(word) for word in self.test_word_list[:2]]
+        return word_list
