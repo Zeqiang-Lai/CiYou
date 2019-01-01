@@ -88,6 +88,14 @@ class WordModel:
         # TODO:
         return self.info
 
+    @staticmethod
+    def find_word(spell):
+        """
+        根据拼写查询单词,在所有公共词书中查找
+        :param spell:
+        :return: 返回格式与get_info相同
+        """
+        pass
 
 class CommentModel:
     pass
